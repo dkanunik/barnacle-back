@@ -1,0 +1,49 @@
+{
+  "name": "barnacle-back",
+  "version": "1.0.0",
+  "description": "Back-end for Barnacle application",
+  "main": "server.js",
+  "author": "dkanunik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkanunik/barnacle-back.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "bson": "^0.4.15",
+    "core-js": "^2.5.6",
+    "express": "^4.16.3",
+    "http-server": "^0.11.1",
+    "log4js": "2.7.0",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.13",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "2.5.0",
+    "chai": "^4.1.2",
+    "chai-match-pattern": "^1.1.0",
+    "codelyzer": "^4.3.0",
+    "eslint": "^4.19.1",
+    "istanbul": "0.4.5",
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "mocha": "^5.2.0",
+    "mocha-allure-reporter": "^1.4.0"
+  },
+  "scripts": {
+    "back:start": "node server.js",
+    "test:api:allure": "node_modules/.bin/mocha --reporter mocha-allure-reporter test/api/spec",
+    "test:api:list": "node_modules/.bin/mocha --reporter list back/tests/api/spec",
+    "test:report": "node_modules/allure-commandline/bin/allure generate allure-results --clean -o reports/allure-report",
+    "reports:clean": "rm -rf reports",
+    "code:eslint": "eslint back/**/*.js --quiet",
+    "db:start": "mongod --dbpath /usr/local/var/mongodb",
+    "db:restore": "mongorestore --gzip --archive=db/barnacle.test.gz --db barnacle",
+    "db:dump": "mongodump --archive=barnacle.test.gz --gzip --db barnacle"
+  }
+}

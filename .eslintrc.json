@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "commonjs": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "arrow-body-style": [
+      "error",
+      "always"
+    ],
+    "no-useless-return": [
+      "error"
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ]
+  },
+  "globals": {
+    "angular": false,
+    "module": false,
+    "inject": false,
+    "describe": false,
+    "it": false
+  }
+}
