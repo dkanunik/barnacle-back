@@ -16,7 +16,7 @@ services:
   back:
     build:
       context: $WORKSPACE
-      dockerfile: docker/config/back/Dockerfile
+      dockerfile: docker/Dockerfile
     container_name: back
     image: back
     ports:
