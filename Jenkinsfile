@@ -23,7 +23,7 @@ node {
 
         sh "mongorestore --host ${env.MONGO_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
 
-        sh 'curl -i http://localhost:3000/api/animals/search/id/5ae342cb8bb3e6c1dbcd145a'
+        sh "curl -i http://${env.MONGO_HOST}:3000/api/animals/search/id/5ae342cb8bb3e6c1dbcd145a"
     }
 
     stage('Run Unit tests') {
