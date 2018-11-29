@@ -9,10 +9,27 @@ const chaiMatchPattern = require('chai-match-pattern');
 chai.use(chaiMatchPattern);
 
 describe('feature api tests', () => {
-    xit('should return an feature object by id', (done) => {
-        request.get(config.URL_HOST + 'api/features/5abd060bdfbd3a094d68d57d', (err, res, body) => {
-            expect(res.statusCode).to.equal(200);
-            chai.expect(JSON.parse(body)[0]).to.matchPattern({'_id':'5abd060bdfbd3a094d68d57d','name':'paw'});
+    it('should return an feature by id', (done) => {
+        request.get(config.URL_HOST + 'api/features/search/id/5abd060bdfbd3a094d68d57d', (err, res, body) => {
+            const expectedFeature = {
+                animals: [ ],
+                name: "paw",
+                id: "5abd060bdfbd3a094d68d57d"
+            };
+            const actualFeature = JSON.parse(body);
+
+            expect(actualFeature).to.matchPattern(expectedFeature);
+            done();
+        });
+    });
+
+
+    it('should return an features list', (done) => {
+        request.get(config.URL_HOST + 'api/features/search/all', (err, res, body) => {
+            const expectedFeatureCount = 12;
+            const actualFeatures = JSON.parse(body);
+
+            expect(actualFeatures).to.be.an('array').that.have.lengthOf(expectedFeatureCount);
             done();
         });
     });
