@@ -2,7 +2,7 @@ node {
 
     stage('Initialize env'){
         env.PATH = "/usr/local/bin/docker-compose:/usr/bin/mongorestore:${env.PATH}"
-        env.DEV_HOST = sh(script: "ip addr ls docker0 | awk '/inet / {print \$2}' | cut -d\"/\" -f1", returnStdout: true).trim()
+        env.MONGO_HOST = sh(script: "ip addr ls docker0 | awk '/inet / {print \$2}' | cut -d\"/\" -f1", returnStdout: true).trim()
     }
 
     stage('git checkout') {
@@ -21,11 +21,10 @@ node {
 
         sh 'docker-compose -f docker/docker-compose.yml up -d'
 
-        sh "mongorestore --host ${env.DEV_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
+        sh "mongorestore --host ${env.MONGO_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
     }
 
     stage('Run back') {
-        sh 'npm run ls'
         sh 'npm run back:start'
         sh 'curl -i http://localhost:3000'
     }

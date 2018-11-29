@@ -2,6 +2,6 @@
 
 module.exports = (app) => {
 	app.get('/', (req, res) => {
-        res.send("Ok");
+        res.send("Ok\r\t");
 	});
 };
