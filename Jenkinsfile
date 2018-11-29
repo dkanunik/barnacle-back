@@ -26,7 +26,7 @@ node {
 
     stage('Run back') {
         sh 'npm run back:start'
-        sh 'curl -i http://localhost:3000'
+        sh 'curl -i http://localhost:3000/api/animals/search/id/5ae342cb8bb3e6c1dbcd145a'
     }
 
     stage('Run Unit tests') {
