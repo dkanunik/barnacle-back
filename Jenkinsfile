@@ -26,7 +26,7 @@ node {
     }
 
     stage('Run back') {
-        sh 'nohup npm run back:start'
+        sh 'npm run back:start'
         sh 'curl -i http://localhost:3000'
     }
 
