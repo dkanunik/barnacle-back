@@ -21,8 +21,7 @@
     "mongoose": "^5.0.13",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
-    "request": "^2.85.0",
-    "pm2": "^3.2.2"
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "allure-commandline": "2.5.0",
@@ -34,11 +33,11 @@
     "jasmine": "^3.1.0",
     "jasmine-core": "^3.1.0",
     "mocha": "^5.2.0",
+    "pm2": "^3.2.2",
     "mocha-allure-reporter": "^1.4.0"
   },
   "scripts": {
-    "back:start": "pm2 start server.js",
-    "back:stop": "pm2 stop server.js",
+    "back:start": "node server.js",
     "ls": "pm2 list",
     "test:api:allure": "node_modules/.bin/mocha --reporter mocha-allure-reporter test/api/spec",
     "test:api:list": "node_modules/.bin/mocha --reporter list back/tests/api/spec",
