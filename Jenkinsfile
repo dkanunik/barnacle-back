@@ -25,7 +25,12 @@ node {
         sh "mongorestore --host ${env.MONGO_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
     }
 
-    stage('RUN Unit tests') {
+    stage('Run back') {
+        npm run back:start
+        curl -i http://localhost:3000
+    }
+
+    stage('Run Unit tests') {
         sh 'npm run test:api:list'
     }
 
