@@ -19,13 +19,10 @@ node {
         sh 'docker/remove.sh'
         sh 'docker network create dev-net || true'
 
-        sh 'docker-compose -f docker/docker-compose.yml up -d'
+        sh 'docker-compose -f docker/docker-compose.yml up -d --force-recreate --build'
 
         sh "mongorestore --host ${env.MONGO_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
-    }
 
-    stage('Run back') {
-        sh 'npm run back:start'
         sh 'curl -i http://localhost:3000/api/animals/search/id/5ae342cb8bb3e6c1dbcd145a'
     }
 

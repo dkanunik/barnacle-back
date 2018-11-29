@@ -13,6 +13,21 @@ services:
     networks:
       - dev-net
 
+  back:
+    build:
+      context: $WORKSPACE
+      dockerfile: docker/config/back/Dockerfile
+    container_name: back
+    image: back
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_HOST=$MONGO_HOST
+    networks:
+      - dev-net
+    depends_on:
+      - mongo
+
 networks:
   dev-net:
     external: true
