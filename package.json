@@ -39,6 +39,7 @@
   "scripts": {
     "back:start": "pm2 start server.js",
     "back:stop": "pm2 stop server.js",
+    "ls": "pm2 list",
     "test:api:allure": "node_modules/.bin/mocha --reporter mocha-allure-reporter test/api/spec",
     "test:api:list": "node_modules/.bin/mocha --reporter list back/tests/api/spec",
     "test:report": "node_modules/allure-commandline/bin/allure generate allure-results --clean -o reports/allure-report",

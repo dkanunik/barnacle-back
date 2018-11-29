@@ -25,8 +25,9 @@ node {
     }
 
     stage('Run back') {
+        sh 'npm run ls'
         sh 'npm run back:start'
-        sh "curl -i http://${env.DEV_HOST}:3000"
+        sh 'curl -i http://localhost:3000'
     }
 
     stage('Run Unit tests') {
