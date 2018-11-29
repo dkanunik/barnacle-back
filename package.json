@@ -40,7 +40,7 @@
     "back:start": "node server.js",
     "ls": "pm2 list",
     "test:api:allure": "node_modules/.bin/mocha --reporter mocha-allure-reporter test/api/spec",
-    "test:api:list": "node_modules/.bin/mocha --reporter list back/tests/api/spec",
+    "test:api:list": "node_modules/.bin/mocha --retries 2 --reporter list back/tests/api/spec",
     "test:report": "node_modules/allure-commandline/bin/allure generate allure-results --clean -o reports/allure-report",
     "reports:clean": "rm -rf reports",
     "code:eslint": "eslint back/**/*.js --quiet",
