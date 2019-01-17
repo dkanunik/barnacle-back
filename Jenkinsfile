@@ -1,5 +1,9 @@
 node {
 
+    stage('Initialize env'){
+        env.PATH = "/usr/local/bin/docker-compose:/usr/bin/mongorestore:${env.PATH}"
+    }
+
     stage('git checkout') {
         checkout scm
     }
