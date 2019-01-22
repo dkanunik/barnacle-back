@@ -4,7 +4,7 @@ node {
         env.PATH = "/usr/local/bin/docker-compose:/usr/bin/mongorestore:${env.PATH}"
         env.NODEJS_HOME = "${tool 'node 8.14'}"
         env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-        env.PATH="${env.NODEJS_HOME};${env.PATH}"
+        env.PATH="${env.NODEJS_HOME};${env.PATH}
         sh 'npm --version'
 
     }
