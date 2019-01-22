@@ -18,6 +18,6 @@ node {
     }
 
     stage('Build docker image') {
-        sh 'docker build -t dkanunik/barnacle-front:latest .'
+        sh 'docker build -t dkanunik/barnacle-back:latest .'
     }
 }
