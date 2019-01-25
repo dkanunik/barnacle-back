@@ -35,5 +35,9 @@ node {
 
     stage('Process docker image') {
         sh 'docker build -t dkanunik/barnacle-back:latest .'
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+            sh 'docker push dkanunik/barnacle-back:latest'
+        }
     }
 }
