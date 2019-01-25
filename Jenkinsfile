@@ -29,7 +29,7 @@ node {
     }
 
     stage('Run Unit tests') {
-        sh 'npm run back:start'
+        sh 'nohup node server.js &'
         sh 'npm run test:api:list'
     }
 
