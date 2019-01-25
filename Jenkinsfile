@@ -4,8 +4,6 @@ node {
         env.PATH = "/usr/local/bin/docker-compose:/usr/bin/mongorestore:${env.PATH}"
         env.NODEJS_HOME = "${tool 'node 8.14'}"
         env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-        sh 'npm --version'
-
     }
 
     stage('git checkout') {
@@ -28,7 +26,7 @@ node {
         sh "mongorestore --host ${env.MONGO_HOST} --gzip --drop --nsInclude barnacle.* --archive=$WORKSPACE/db/barnacle.test.gz"
     }
 
-    stage('Run Unit tests') {
+    stage('Run API tests') {
         sh 'nohup node server.js &'
         sh 'npm run test:api:list'
     }
