@@ -29,6 +29,7 @@ node {
     }
 
     stage('Run Unit tests') {
+        sh 'npm run back:start'
         sh 'npm run test:api:list'
     }
 
