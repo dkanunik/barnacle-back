@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db
+      - /data/configdb
+    networks:
+      - dev-net
+
+networks:
+  dev-net:
+    external: true
