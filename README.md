@@ -12,11 +12,11 @@ Port
 ```
 Start mongodb 
 ```
-npm run db:start
+$ npm run db:start
 ```
 Start back server
 ```
-npm run back:start
+$ npm run back:start
 ```
 
 ##### Animals
@@ -35,6 +35,6 @@ npm run back:start
 
 ##### API tests
  ```
- npm run test:api:list
- npm run test:api:allure
+$ npm run test:api:list
+$ npm run test:api:allure
  ```
